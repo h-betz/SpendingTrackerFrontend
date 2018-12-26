@@ -4,7 +4,7 @@ import Category from './Category';
 class App extends React.Component {
 
 	state = {
-		categories: null
+		categories: []
 	};
 
 	constructor(props) {
@@ -21,7 +21,11 @@ class App extends React.Component {
 
 	renderContent() {
 		if (this.state.categories) {
-
+			for (const [i, category] of this.state.categories.entries()) {
+				const balance = category.balance;
+				const name = category.name;
+				return <Category name={name} balance={balance} />;
+			}
 		}
 	}
 
