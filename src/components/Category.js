@@ -9,7 +9,7 @@ class Category extends React.Component {
 						<h4>
 							<b>{this.props.name}</b>
 						</h4>
-						<p class="balance">
+						<p className="balance">
 							<i>Balance: {this.props.balance}</i>
 						</p>
 					</div>

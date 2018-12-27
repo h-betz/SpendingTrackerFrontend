@@ -51,6 +51,10 @@ textarea:focus, input:focus{
     padding: 2px 16px;
 }
 
+#category-header {
+	padding-top: 1em;
+}
+
 #category-container {
     border: 0;
     border-color: transparent;
