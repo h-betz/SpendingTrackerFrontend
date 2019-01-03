@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import Category from './Category';
+import CategoryList from './CategoryList';
 import CategoryForm from './CategoryForm';
 
 class App extends React.Component {
@@ -13,26 +13,14 @@ class App extends React.Component {
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
-	renderContent() {
-		if (this.state.categories) {
-			for (const [i, category] of this.state.categories.entries()) {
-				const balance = category.balance;
-				const name = category.name;
-				return <Category name={name} balance={balance} />;
-			}
-		}
-	}
-
 	onFormSubmit(category) {
-		console.log(category);
+		category = {
+			name: category,
+			balance: 0
+		}
 		this.setState(previousState => ({
 			categories: [...previousState.categories, category]
 		}));
-		console.log(this.state.categories);
-		for (const [i, category] of this.state.categories.entries()) {
-			console.log(category);
-		}
-		this.renderContent();
 	}
 
 	render() {
@@ -49,7 +37,7 @@ class App extends React.Component {
 									<CategoryForm onSubmit={this.onFormSubmit}/>
 								</div>
 								<div className="list-group" id="category-list">
-									{this.renderContent()}
+									<CategoryList categories={this.state.categories}/>
 								</div>
 							</div>
 						</div>
