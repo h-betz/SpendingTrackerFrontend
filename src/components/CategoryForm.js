@@ -19,7 +19,7 @@ class CategoryForm extends React.Component {
 										placeholder="Food" 
 										type="text" 
 										id="category-input" 
-										autocomplete="off"
+										autoComplete="off"
 										onChange={(e) =>
 											this.setState({category: e.target.value})
 										} 
