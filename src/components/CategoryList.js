@@ -1,11 +1,11 @@
 import React from 'react';
 import CategoryCard from './CategoryCard';
 
-const CategoryList = (props) => {
-    const categories = props.categories.map((category) => {
-        return <CategoryCard category={category} />;
+const CategoryList = ({categories, onCategorySelect}) => {
+    const renderedList = categories.map((category) => {
+        return <CategoryCard category={category} onCategorySelect={onCategorySelect} />;
     })
-    return <div>{categories}</div>
+    return <div>{renderedList}</div>
 };
 
 export default CategoryList;
