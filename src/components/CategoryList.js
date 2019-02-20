@@ -1,11 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CategoryCard from './CategoryCard';
+import { onCategorySelect } from '../actions';
 
-const CategoryList = ({categories, onCategorySelect}) => {
-    const renderedList = categories.map((category) => {
-        return <CategoryCard category={category} onCategorySelect={onCategorySelect} />;
-    })
-    return <div>{renderedList}</div>
+class CategoryList extends React.Component {
+
+    renderList() {
+        return this.props.categories.map((category) => {
+            return (
+                <CategoryCard category={category} onClick={() => this.props.onCategorySelect(category)} />
+            );
+        });
+    }
+
+    render() {
+        return <div>{this.renderList()}</div>;
+    }
+
+}
+
+const mapStateToProps = state => {
+    console.log(state);
+    return { categories: state.categories };  
 };
 
-export default CategoryList;
+export default connect(mapStateToProps, {
+    onCategorySelect
+}) (CategoryList);
