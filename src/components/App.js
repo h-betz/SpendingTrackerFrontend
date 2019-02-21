@@ -17,17 +17,17 @@ const App = () => {
 								</div>
 								<div className="panel body" id="categories">
 									<div className="card z-depth-4">
-										<CategoryForm onSubmit={this.onFormSubmit}/>
+										<CategoryForm />
 									</div>
 									<div className="list-group" id="category-list">
-										<CategoryList categories={this.state.categories} onCategorySelect={this.onCategorySelect}/>
+										<CategoryList />
 									</div>
 								</div>
 							</div>
 						</div>
 					</nav>
 				</div>
-				<Dashboard category={this.state.selectedCategory} />
+				<Dashboard  />
 			</div>
 		</div>
 	)

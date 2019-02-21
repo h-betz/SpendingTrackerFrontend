@@ -10,3 +10,9 @@ export const onCategoryFormSubmit = event => {
         payload: ''
     };
 }
+
+export const onExpenseFormSubmit = event => {
+    return {
+        payload: ''
+    };
+}
