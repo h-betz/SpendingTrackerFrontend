@@ -1,8 +1,25 @@
 import axios from 'axios';
 import React from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import CategoryList from './CategoryList';
 import CategoryForm from './CategoryForm';
 import Dashboard from './Dashboard';
+
+const dashboardPage = () => {
+	return (
+		<div>
+
+		</div>
+	);
+}
+
+const signUpPage = () => {
+	return (
+		<div>
+
+		</div>
+	);
+}
 
 const App = () => {
 	return (
@@ -31,7 +48,7 @@ const App = () => {
 			</div>
 		</div>
 	)
-}
+};
 
 // class App extends React.Component {
 
