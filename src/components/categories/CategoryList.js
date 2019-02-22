@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CategoryCard from './CategoryCard';
-import { onCategorySelect } from '../actions';
+import { onCategorySelect } from '../../actions';
 
 class CategoryList extends React.Component {
 

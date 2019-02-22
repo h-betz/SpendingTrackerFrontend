@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { onCategoryFormSubmit } from '../actions';
+import { onCategoryFormSubmit } from '../../actions';
 
 class CategoryForm extends React.Component {
 
