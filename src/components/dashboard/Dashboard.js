@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-import Trends from './trends/Trends';
+import Trends from '../trends/Trends';
+import Search from '../search/Search';
 
 /**
  * Contains the bulk of the application. Displays:
@@ -13,10 +14,7 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
-                <HashRouter>
-                    <Route path="/trends" exact component={Trends}/>
-                    <Route path="/search" exact component={Search}/>
-                </HashRouter>
+                Dashboard
             </div>
         )
     }

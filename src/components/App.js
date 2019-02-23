@@ -10,10 +10,12 @@ const App = () => {
 	return (
 		<div className="ui container">
 			<HashRouter>
-				<Header />
-				<Route path="/" exact component={Dashboard}/>
-				<Route path="/category" exact component={CategoryPage}/>
-				<Route path="/search" exact component={Search}/>
+				<div>
+					<Header />
+					<Route path="/" exact component={Dashboard}/>
+					<Route path="/category" exact component={CategoryPage}/>
+					<Route path="/search" exact component={Search}/>
+				</div>
 			</HashRouter>
 		</div>
 	)
