@@ -8,10 +8,22 @@ import GoogleAuth from './GoogleAuth';
  */
 const Header = () => {
     return (
-        <div className="ui secondary pointing menu">
-            <Link to="/" className="item">
-                SpendingTracker
-            </Link>
+        <div className="ui inverted menu">
+            <div className="header item">
+                <Link to="/">
+                    SpendingTracker
+                </Link>
+            </div>
+            <div className="header item">
+                <Link to="/about">
+                    About
+                </Link>
+            </div>
+            <div className="header item">
+                <Link to="/dashboard">
+                    Dashboard
+                </Link>
+            </div>
             <div className="right menu">
                 <GoogleAuth />
             </div>
