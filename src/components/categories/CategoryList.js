@@ -5,10 +5,12 @@ import { onCategorySelect } from '../../actions';
 
 class CategoryList extends React.Component {
 
+    state = {categories: []};
+
     renderList() {
-        return this.props.categories.map((category) => {
+        return this.state.categories.map((category) => {
             return (
-                <CategoryCard category={category} onClick={() => this.props.onCategorySelect(category)} />
+                <CategoryCard category={category} onClick={() => this.state.onCategorySelect(category)} />
             );
         });
     }
@@ -20,7 +22,6 @@ class CategoryList extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return { categories: state.categories };  
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
+import CategoryList from '../categories/CategoryList';
+import DashboardOptions from './DashboardOptions';
 import Trends from '../trends/Trends';
 import Search from '../search/Search';
 
@@ -13,8 +15,15 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <div>
-                Dashboard
+            <div className="ui grid">
+                <div className="ui row">
+                    <div className="three wide column">
+                        <CategoryList />
+                    </div>
+                    <div className="nine wide column">
+                        <DashboardOptions />
+                    </div>
+                </div>
             </div>
         )
     }
