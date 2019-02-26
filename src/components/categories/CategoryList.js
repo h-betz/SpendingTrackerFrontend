@@ -8,6 +8,10 @@ class CategoryList extends React.Component {
 
     state = {categories: []};
 
+    componentDidMount() {
+        
+    }
+
     renderList() {
         return this.state.categories.map((category) => {
             return (
