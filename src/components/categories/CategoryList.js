@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CategoryCard from './CategoryCard';
+import CategoryForm from './CategoryForm';
 import { onCategorySelect } from '../../actions';
 
 class CategoryList extends React.Component {
@@ -16,7 +17,16 @@ class CategoryList extends React.Component {
     }
 
     render() {
-        return <div>{this.renderList()}</div>;
+        return (
+            <div>
+                <div>
+                    <CategoryForm />
+                </div>
+                <div>
+                    {this.renderList()}
+                </div>
+            </div>
+        )
     }
 
 }

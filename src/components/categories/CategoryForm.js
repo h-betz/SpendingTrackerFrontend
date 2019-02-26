@@ -9,6 +9,7 @@ class CategoryForm extends React.Component {
 
 	// Handle submit
 	onSubmit(formValues) {
+		// TODO send form data to API
 		console.log(formValues);
 	}
 
