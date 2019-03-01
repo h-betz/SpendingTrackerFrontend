@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CategoryCard from './CategoryCard';
 import CategoryForm from './CategoryForm';
-import { onCategorySelect } from '../../actions';
+import { onCategorySelect, fetchCategories } from '../../actions';
 
 class CategoryList extends React.Component {
 
     state = {categories: []};
 
     componentDidMount() {
-        
+        this.props.fetchCategories();
     }
 
     renderList() {
@@ -40,5 +40,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    onCategorySelect
+    onCategorySelect, fetchCategories
 }) (CategoryList);
