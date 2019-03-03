@@ -8,3 +8,4 @@ export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const FETCH_EXPENSES = 'FETCH_EXPENSES';

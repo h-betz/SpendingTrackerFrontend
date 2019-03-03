@@ -1,4 +1,4 @@
-// import {SIGN_IN, SIGN_OUT, ADD_CATEGORY, SELECT_CATEGORY} from './types'
+import _ from 'lodash';
 import * as actionTypes from './types';
 import api from '../api/api';
 
@@ -62,6 +62,24 @@ export const onCategoryFormSubmit = category => {
 export const onExpenseFormSubmit = expense => {
     return {
         type: actionTypes.ADD_EXPENSE,
+        payload: expense
+    };
+};
+
+/**
+ * 
+ * @param {User id of current user} userId 
+ * @param {Category id for the current selected category} categoryId 
+ */
+export const fetchExpenses = (userId, categoryId) => async dispatch => {
+    const response = await api.post('/expenses');
+    dispatch({type: actionTypes.FETCH_EXPENSES, payload: response.data});
+};
+
+
+export const deleteExpense = expense => {
+    return {
+        type: actionTypes.DELETE_EXPENSE,
         payload: expense
     };
 };
