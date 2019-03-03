@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {signIn, signOut} from '../actions';
+import {signIn, signOut, verifyUser} from '../actions';
 
 class GoogleAuth extends React.Component {
 
@@ -21,11 +21,17 @@ class GoogleAuth extends React.Component {
         });
     }
 
-    // Handle sign in status changes
+    /**
+     * After user signs in, verify that the token id and user id
+     * are valid. If so, then fetch the user's data (categories)
+     */
     onAuthChange = isSignedIn => {
         if (isSignedIn) {
-            this.props.signIn(this.auth.currentUser.get().getId());
-            // TODO: Make API request
+            let userId = this.auth.currentUser.get().getId();
+            let tokenId = this.auth.currentUser.get().getAuthResponse()['id_token'];
+            this.props.signIn();
+            // TODO: After verifying user, fetch user data
+            this.props.verifyUser(userId, tokenId);
         } else {
             this.props.signOut();
         }
@@ -72,4 +78,10 @@ const mapStateToProps = (state) => {
     return {isSignedIn: state.auth.isSignedIn};
 };
 
-export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth);
+export default connect(
+    mapStateToProps, {
+        signIn,
+        signOut,
+        verifyUser
+    }
+)(GoogleAuth);

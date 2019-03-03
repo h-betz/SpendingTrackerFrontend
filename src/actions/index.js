@@ -23,11 +23,28 @@ export const signOut = () => {
 };
 
 /**
+ * Verifies that the user ID and the user's token ID are valid. 
+ * Helps prevent stale users or non-signed in users from accessing
+ * our app
+ * @param {User's Google ID} userId 
+ * @param {The token ID associated with this user's login} tokenId 
+ */
+export const verifyUser = (userId, tokenId) => async dispatch => {
+    const response = await api.post('/user', {
+        userId: userId,
+        tokenId: tokenId,
+    });
+    dispatch({type: actionTypes.VERIFY_USER, payload: response});
+};
+
+/**
  * Getting categories
  */
-export const fetchCategories = () => async dispatch => {
-    const response = await api.get('/categories');
-    dispatch({type: 'FETCH_CATEGORIES', payload: response});
+export const fetchCategories = userId => async dispatch => {
+    const response = await api.post('/categories', {
+        userId: userId
+    }, {headers: {}});
+    dispatch({type: actionTypes.FETCH_CATEGORIES, payload: response});
 };
 
 /**
@@ -72,7 +89,10 @@ export const onExpenseFormSubmit = expense => {
  * @param {Category id for the current selected category} categoryId 
  */
 export const fetchExpenses = (userId, categoryId) => async dispatch => {
-    const response = await api.post('/expenses');
+    const response = await api.post('/expenses', {
+        userId: userId,
+        categoryId: categoryId,
+    }, {headers: {}});
     dispatch({type: actionTypes.FETCH_EXPENSES, payload: response.data});
 };
 

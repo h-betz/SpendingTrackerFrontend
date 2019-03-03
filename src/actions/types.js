@@ -4,6 +4,7 @@
  */
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
+export const VERIFY_USER = 'VERIFY_USER';
 export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
