@@ -49,14 +49,18 @@ export const fetchCategories = userId => async dispatch => {
 
 /**
  * Category select action creator. Handles the user category select
- * action
+ * action. Same as fetchExpenses
  * @param {Handles the user selected category} category 
  */
-export const onCategorySelect = category => {
-    return {
-        type: actionTypes.SELECT_CATEGORY,
-        payload: category
-    };
+export const onCategorySelect = (userId, categoryId) => {
+    const response = await api.post('/expenses', {
+        userId: userId,
+        categoryId: categoryId,
+    }, {headers: {}});
+    dispatch({
+        type: actionTypes.FETCH_EXPENSES,
+        payload: response.data
+    });
 };
 
 /**
@@ -64,23 +68,25 @@ export const onCategorySelect = category => {
  * a new category
  * @param {Handles user input for submitting a new category} event 
  */
-export const onCategoryFormSubmit = category => {
-    return {
+export const onCategoryFormSubmit = category => async dispatch => {
+    const response = await api.post('/categories', category);
+    dispatch({
         type: actionTypes.ADD_CATEGORY,
-        payload: category
-    };
+        payload: response.data
+    });
 };
 
 /**
  * Add expense action creator. Handles the user action of 
  * adding a new expense
- * @param {Handles user submit expense action} expense 
+ * @param {Handles user submit expense action} formValues 
  */
-export const onExpenseFormSubmit = expense => {
-    return {
+export const onExpenseFormSubmit = formValues => async dispatch => {
+    const response = api.post('/expenses', formValues);
+    dispatch({
         type: actionTypes.ADD_EXPENSE,
-        payload: expense
-    };
+        payload: response.data
+    });
 };
 
 /**
@@ -93,13 +99,20 @@ export const fetchExpenses = (userId, categoryId) => async dispatch => {
         userId: userId,
         categoryId: categoryId,
     }, {headers: {}});
-    dispatch({type: actionTypes.FETCH_EXPENSES, payload: response.data});
+    dispatch({
+        type: actionTypes.FETCH_EXPENSES,
+        payload: response.data
+    });
 };
 
 
-export const deleteExpense = expense => {
-    return {
+export const deleteExpense = expenseId => async dispatch => {
+    await api.post('/expenses', {
+        expenseId: expenseId,
+        action: 'Delete'
+    });
+    dispatch({
         type: actionTypes.DELETE_EXPENSE,
-        payload: expense
-    };
+        payload: expenseId
+    })
 };
