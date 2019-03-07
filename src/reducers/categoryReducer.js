@@ -1,4 +1,4 @@
-import FETCH_CATEGORIES from '../actions/types';
+import {FETCH_CATEGORIES} from '../actions/types';
 
 
 export default (state={}, action) => {

@@ -52,7 +52,7 @@ export const fetchCategories = userId => async dispatch => {
  * action. Same as fetchExpenses
  * @param {Handles the user selected category} category 
  */
-export const onCategorySelect = (userId, categoryId) => {
+export const onCategorySelect = (userId, categoryId) => async dispatch => {
     const response = await api.post('/expenses', {
         userId: userId,
         categoryId: categoryId,
@@ -68,12 +68,14 @@ export const onCategorySelect = (userId, categoryId) => {
  * a new category
  * @param {Handles user input for submitting a new category} event 
  */
-export const onCategoryFormSubmit = category => async dispatch => {
-    const response = await api.post('/categories', category);
+export const onCategoryFormSubmit = formValues => async (dispatch, getState) => {
+    const {userId} = getState().auth;
+    const response = await api.post('/categories', {...formValues, userId});
     dispatch({
         type: actionTypes.ADD_CATEGORY,
         payload: response.data
     });
+    // TODO update category list
 };
 
 /**
@@ -81,8 +83,8 @@ export const onCategoryFormSubmit = category => async dispatch => {
  * adding a new expense
  * @param {Handles user submit expense action} formValues 
  */
-export const onExpenseFormSubmit = formValues => async dispatch => {
-    const response = api.post('/expenses', formValues);
+export const onExpenseFormSubmit = formValues => async (dispatch, userId) => {
+    const response = api.post('/expenses', {...formValues, userId});
     dispatch({
         type: actionTypes.ADD_EXPENSE,
         payload: response.data
