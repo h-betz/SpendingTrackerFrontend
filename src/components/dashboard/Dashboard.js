@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { HashRouter, Route } from 'react-router-dom';
 import CategoryList from '../categories/CategoryList';
 import DashboardOptions from './DashboardOptions';
+import TransactionsContainer from '../transactions/TransactionsContainer';
 import Trends from '../trends/Trends';
 import Search from '../search/Search';
 
@@ -22,6 +24,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="nine wide column">
                         <DashboardOptions />
+                        <TransactionsContainer />
                     </div>
                 </div>
             </div>
@@ -30,4 +33,11 @@ class Dashboard extends React.Component {
 
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+    return {
+        currentUserId: state.auth.userId,
+        isSignedIn: state.auth.isSignedIn
+    };
+}
+
+export default connect(mapStateToProps, {})(Dashboard);

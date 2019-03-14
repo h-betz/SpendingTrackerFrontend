@@ -21,6 +21,10 @@ class CategoryList extends React.Component {
     }
 
     render() {
+        const signedIn = this.props.signedIn;
+        if (!signedIn) {
+            return <div></div>;
+        }
         return (
             <div>
                 <div>
@@ -36,7 +40,10 @@ class CategoryList extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { categories: state.categories };  
+    return { 
+        categories: state.categories,
+        isSignedIn: state.auth.isSignedIn
+    };  
 };
 
 export default connect(mapStateToProps, {

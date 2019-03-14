@@ -26,13 +26,13 @@ class TransactionForm extends React.Component {
         );
     }
 
-    onSubmit = formValue => {
+    onSubmit = formValues => {
         this.props.onSubmit(formValues);
     }
 
     render() {
         return (
-            <form >
+            <form className="ui form error">
                 <Field name="amount" component={this.renderInput} label="Amount" />
                 <Field name="description" component={this.renderInput} label="Description" />
                 <Field name="date" component={this.renderInput} label="Date" />
