@@ -7,12 +7,13 @@ import Dashboard from './dashboard/Dashboard';
 import Header from './Header';
 import LandingPage from './LandingPage';
 import Search from './search/Search';
+import history from '../history';
 
 
 const App = () => {
 	return (
 		<div className="ui container">
-			<HashRouter>
+			<HashRouter history={history}>
 				<div>
 					<Header />
 					<Route path="/" exact component={LandingPage} />

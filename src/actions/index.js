@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import * as actionTypes from './types';
+import history from '../history';
 import api from '../api/api';
 
 /**
@@ -76,6 +77,7 @@ export const onCategoryFormSubmit = formValues => async (dispatch, getState) => 
         payload: response.data
     });
     // TODO update category list
+    history.push('/');
 };
 
 /**
@@ -89,6 +91,7 @@ export const onExpenseFormSubmit = formValues => async (dispatch, userId) => {
         type: actionTypes.ADD_EXPENSE,
         payload: response.data
     });
+    history.push('/');
 };
 
 /**
@@ -108,6 +111,10 @@ export const fetchExpenses = (userId, categoryId) => async dispatch => {
 };
 
 
+/**
+ * Deletes the expense given the id
+ * @param {The id of the expense} expenseId 
+ */
 export const deleteExpense = expenseId => async dispatch => {
     await api.post('/expenses', {
         expenseId: expenseId,
@@ -116,5 +123,6 @@ export const deleteExpense = expenseId => async dispatch => {
     dispatch({
         type: actionTypes.DELETE_EXPENSE,
         payload: expenseId
-    })
+    });
+    history.push('/');
 };

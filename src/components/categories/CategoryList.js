@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CategoryCard from './CategoryCard';
-import CategoryForm from './CategoryForm';
+import CategoryCreate from './CategoryCreate';
 import { onCategorySelect, fetchCategories } from '../../actions';
 
 class CategoryList extends React.Component {
@@ -24,7 +24,7 @@ class CategoryList extends React.Component {
         return (
             <div>
                 <div>
-                    <CategoryForm />
+                    <CategoryCreate />
                 </div>
                 <div>
                     {this.renderList()}
