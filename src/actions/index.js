@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import * as actionTypes from './types';
-import history from '../history';
+// import history from '../history';
 import api from '../api/api';
 
 /**
@@ -77,7 +77,7 @@ export const onCategoryFormSubmit = formValues => async (dispatch, getState) => 
         payload: response.data
     });
     // TODO update category list
-    history.push('/');
+    // history.push('/');
 };
 
 /**
@@ -91,7 +91,7 @@ export const onExpenseFormSubmit = formValues => async (dispatch, userId) => {
         type: actionTypes.ADD_EXPENSE,
         payload: response.data
     });
-    history.push('/');
+    // history.push('/');
 };
 
 /**
@@ -124,5 +124,5 @@ export const deleteExpense = expenseId => async dispatch => {
         type: actionTypes.DELETE_EXPENSE,
         payload: expenseId
     });
-    history.push('/');
+    // history.push('/');
 };

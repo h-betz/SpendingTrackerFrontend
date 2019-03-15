@@ -1,11 +1,20 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import Modal from './Modal';
 
-const LandingPage = () => {
-    return (
-        <div>
-            LandingPage
-        </div>
-    )
-};
+class LandingPage extends React.Component {
 
-export default LandingPage;
+    render() {
+        return (
+            <Modal />
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        isSignedIn: state.isSignedIn
+    };
+}
+
+export default connect(mapStateToProps, {})(LandingPage);
