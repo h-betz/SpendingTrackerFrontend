@@ -8,13 +8,14 @@ const Modal = props => {
     return ReactDOM.createPortal(
         <div onClick={props.onDismiss} className="ui dimmer modals visible active">
             <div onClick={(e) => e.stopPropagation()} className="ui standard modal visible active">
-                <center>            
-                    <h3>Sign In</h3>
+                <center>
+                    <br />
                     <GoogleAuth text={signIn}/>
                     <br />
                     Or
-                    <h3>Sign Up</h3>
+                    <br />
                     <GoogleAuth text={signUp}/>
+                    <br />
                 </center>            
             </div>
         </div>, 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { HashRouter, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import CategoryList from '../categories/CategoryList';
 import DashboardOptions from './DashboardOptions';
 import TransactionsContainer from '../transactions/TransactionsContainer';

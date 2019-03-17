@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Modal from './Modal';
+import history from '../history';
 
 class LandingPage extends React.Component {
 
