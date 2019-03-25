@@ -45,7 +45,7 @@ class TransactionForm extends React.Component {
 const validate = (formValues) => {
     const errors = {};
     if (!formValues.amount) {
-        errors.amoutn = 'You must enter an amount';
+        errors.amount = 'You must enter an amount';
     }
 
     if (!formValues.date) {
@@ -59,4 +59,7 @@ const validate = (formValues) => {
     return errors;
 }
 
-export default reduxForm({})(TransactionForm);
+export default reduxForm({
+    form: 'TransactionForm',
+    validate
+})(TransactionForm);

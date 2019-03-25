@@ -15,7 +15,7 @@ class TransactionCreate extends React.Component {
                 <h3>Create a Transaction</h3>
                 <TransactionForm onSubmit={this.onSubmit} />
             </div>
-        )
+        );
     }
 
 }

@@ -31,6 +31,7 @@ export const signOut = () => {
  * @param {The token ID associated with this user's login} tokenId 
  */
 export const verifyUser = (userId, tokenId) => async dispatch => {
+    console.log('Verifying');
     const response = await api.post('/user', {
         userId: userId,
         tokenId: tokenId,

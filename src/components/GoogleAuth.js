@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import {signIn, signOut, verifyUser} from '../actions';
+import CSRFToken from '../csrftoken';
 import history from '../history';
 
 class GoogleAuth extends React.Component {
@@ -33,6 +35,7 @@ class GoogleAuth extends React.Component {
             this.props.signIn();
             // TODO: After verifying user, fetch user data
             this.props.verifyUser(userId, tokenId);
+            history.push('/dashboard');
         } else {
             this.props.signOut();
         }
@@ -41,7 +44,6 @@ class GoogleAuth extends React.Component {
     // Handle the user sign in click
     onSignInClick = () => {
         this.auth.signIn();
-        history.push('/dashboard');
     };
 
     // Handle the user sign out click
@@ -73,12 +75,12 @@ class GoogleAuth extends React.Component {
 
     // Render auth app data
     render() {
-        if (this.props.isSignedIn) {
-            history.push('/dashboard');
-            return <div></div>;
-        } else {
-            return <div>{this.renderAuthButton()}</div>;
-        }
+        return (
+            <div>
+                <CSRFToken />
+                {this.renderAuthButton()}
+            </div>
+        );
     }
 }
 
