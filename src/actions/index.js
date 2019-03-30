@@ -2,6 +2,12 @@ import _ from 'lodash';
 import * as actionTypes from './types';
 // import history from '../history';
 import api from '../api/api';
+import axios from 'axios';
+const instance = axios.create({
+    baseURL: 'http://127.0.0.1:8000/api/wallet'
+});
+instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+instance.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
 
 /**
  * The sign in action creator. Handles the user sign in action
@@ -31,8 +37,7 @@ export const signOut = () => {
  * @param {The token ID associated with this user's login} tokenId 
  */
 export const verifyUser = (userId, tokenId) => async dispatch => {
-    console.log('Verifying');
-    const response = await api.post('/user', {
+    const response = await instance.post('/user', {
         userId: userId,
         tokenId: tokenId,
     });
