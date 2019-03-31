@@ -4,6 +4,17 @@ import * as actionTypes from './types';
 import api from '../api/api';
 
 
+export const onAuthSubmit = (username, password) => async dispatch => {
+    const response = await api.post('/auth', {
+        username: username,
+        password: password,
+    }, {headers: {}});
+    dispatch({
+        type: actionTypes.AUTH,
+        payload: response.data
+    });
+}
+
 /**
  * The sign in action creator. Handles the user sign in action
  * @param {the user's Google Id that we will user to identify them} userId 

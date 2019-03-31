@@ -1,13 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Modal from './Modal';
-import history from '../history';
+import LoginCreate from './LoginCreate';
+import Modal from '../Modal';
+import history from '../../history';
 
 class LandingPage extends React.Component {
 
     render() {
         return (
-            <Modal />
+            <div>
+                <LoginCreate />
+            </div>
         );
     }
 }

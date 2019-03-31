@@ -5,7 +5,7 @@ import About from './About';
 import CategoryPage from './categories/CategoryPage';
 import Dashboard from './dashboard/Dashboard';
 import Header from './Header';
-import LandingPage from './LandingPage';
+import LandingPage from './auth/LandingPage';
 import Search from './search/Search';
 import history from '../history';
 
