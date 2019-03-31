@@ -2,22 +2,23 @@ import _ from 'lodash';
 import * as actionTypes from './types';
 // import history from '../history';
 import api from '../api/api';
-import axios from 'axios';
-const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api/wallet'
-});
-instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-instance.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+
 
 /**
  * The sign in action creator. Handles the user sign in action
  * @param {the user's Google Id that we will user to identify them} userId 
  */
-export const signIn = (userId) => {
-    return {
-        type: actionTypes.SIGN_IN,
-        payload: userId
-    };
+export const signIn = (userId, tokenId) => async dispatch => {
+    // return {
+        // type: actionTypes.SIGN_IN,
+        // payload: userId
+    // };
+    const response = await api.post('/user', {
+        userId: userId,
+        tokenId: tokenId,
+    }, {headers: {'Access-Control-Allow-Origin': '*'}});
+    console.log(response);
+    dispatch({type: actionTypes.SIGN_IN, payload: response});
 };
 
 /**
@@ -37,10 +38,10 @@ export const signOut = () => {
  * @param {The token ID associated with this user's login} tokenId 
  */
 export const verifyUser = (userId, tokenId) => async dispatch => {
-    const response = await instance.post('/user', {
+    const response = await api.post('/user', {
         userId: userId,
         tokenId: tokenId,
-    });
+    }, {'Access-Control-Allow-Origin': '*'});
     dispatch({type: actionTypes.VERIFY_USER, payload: response});
 };
 

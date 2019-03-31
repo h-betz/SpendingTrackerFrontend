@@ -32,10 +32,8 @@ class GoogleAuth extends React.Component {
         if (isSignedIn) {
             let userId = this.auth.currentUser.get().getId();
             let tokenId = this.auth.currentUser.get().getAuthResponse()['id_token'];
-            this.props.signIn();
-            // TODO: After verifying user, fetch user data
-            this.props.verifyUser(userId, tokenId);
-            // history.push('/dashboard');
+            this.props.signIn(userId, tokenId);
+            history.push('/dashboard');
         } else {
             this.props.signOut();
         }
@@ -49,6 +47,7 @@ class GoogleAuth extends React.Component {
     // Handle the user sign out click
     onSignOutClick = () => {
         this.auth.signOut();
+        history.push('/');
     };
 
     // Generates the Google sign in/out button based on the user's status
